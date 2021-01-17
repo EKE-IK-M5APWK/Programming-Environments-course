@@ -1,0 +1,33 @@
+﻿<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        Title="Menhely adatok" Height="614.075" Width="1525.067">
+    <Canvas Margin="10,0,2,206">
+        <ListView x:Name="lvAnimalList" HorizontalAlignment="Left" Height="508" VerticalAlignment="Top" Width="1505" MouseDoubleClick="GetAnimalData">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True">
+                    <GridView.Columns>
+                    <GridViewColumn Width="150" Header="Név" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="150" Header="Életkor" DisplayMemberBinding="{Binding Age}" />
+                    <GridViewColumn Width="150" Header="Nem" DisplayMemberBinding="{Binding Sex}" />
+                    <GridViewColumn Width="150" Header="Faj"  DisplayMemberBinding="{Binding Species}" />
+                    <GridViewColumn Width="150" Header="Fajta"  DisplayMemberBinding="{Binding Breed}" />
+                    <GridViewColumn Width="150" Header="Szín"  DisplayMemberBinding="{Binding Color}" />
+                    <GridViewColumn Width="150" Header="Magasság"  DisplayMemberBinding="{Binding Weight}" />
+                    <GridViewColumn Width="150" Header="Súly"  DisplayMemberBinding="{Binding Height}" />
+                    <GridViewColumn Width="150" Header="Állapot"  DisplayMemberBinding="{Binding Condition}" />
+                    <GridViewColumn Width="150" Header="Adoptált?"  DisplayMemberBinding="{Binding Adopted}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Height="100"/>
+        <Button Content="Új állat felvétele" HorizontalAlignment="Left" VerticalAlignment="Top" Width="727" RenderTransformOrigin="0.482,0.531" Height="75" Click="NewAnimalClick" Canvas.Top="508"/>
+        <Button Content="Kilépés" HorizontalAlignment="Left" VerticalAlignment="Top" Width="778" RenderTransformOrigin="0.511,0.562" Height="75" Click="exitClick" Canvas.Left="727" Canvas.Top="508"/>
+    </Canvas>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="WPF.View.getAnimalDataView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.View"
+        mc:Ignorable="d"
+        Title="Adatok" Height="559.273" Width="463.405">
+    <StackPanel HorizontalAlignment="Left" Height="527" VerticalAlignment="Top" Width="452">
+        <Label Content="Név"  HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Name}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Kor"  HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Age}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Faj"  HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Species}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Fajta" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Breed}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Szín" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Color}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Magasság" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Height}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Súly" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Weight}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Nem" HorizontalAlignment="Center">
+        </Label>
+
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Sex}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Jelenlegi állapot" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Condition}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Label Content="Adoptált" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=Animal.Adopted}" Background="Black" Foreground="White" IsReadOnly="True"/>
+        <Button Content="Bezár" Name="btnClose" Height="40" Click="Close_Click" Margin="10,0,0,0"/>
+    </StackPanel>
+</Window>

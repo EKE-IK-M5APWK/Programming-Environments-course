@@ -1,0 +1,44 @@
+﻿<Window x:Class="WPF.View.newAnimalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.View"
+        mc:Ignorable="d"
+        Title="Új Állat felvétele" Height="592.54" Width="462.198">
+    <StackPanel HorizontalAlignment="Left" Height="561" VerticalAlignment="Top" Width="452">
+        <Label Content="Név"  HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Name}" Background="Black" Foreground="White" />
+        <Label Content="Kor"  HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Age}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
+        <Label Content="Faj"  HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Species}" Background="Black" Foreground="White"/>
+        <Label Content="Fajta" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Breed}" Background="Black" Foreground="White"/>
+        <Label Content="Szín" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Color}" Background="Black" Foreground="White"/>
+        <Label Content="Magasság" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Height}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
+        <Label Content="Súly" HorizontalAlignment="Center">
+        </Label>
+        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Weight}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
+        <Label Content="Nem" HorizontalAlignment="Center">
+        </Label>
+        <ComboBox Name="sexComboBox" ItemsSource="{Binding Sex}" SelectedValue="{Binding newAnimal.Sex}"/>
+        <Label Content="Jelenlegi állapot" HorizontalAlignment="Center">
+        </Label>
+        <ComboBox Name="sateComboBox" ItemsSource="{Binding Conditions}" SelectedValue="{Binding newAnimal.Condition}"/>
+        <Label Content="Adoptált" HorizontalAlignment="Center">
+        </Label>
+        <ComboBox Name="adoptedComboBox" ItemsSource="{Binding Adopted}" SelectedValue="{Binding newAnimal.Adopted}"/>
+        <Button Content="Új Állat felvétele" Height="37" HorizontalAlignment="Right" Width="453" Margin="-1,0,0,0" Click="addNewAnimal"/>
+        <Button Content="Bezárás" Height="37" Click="Exit"/>
+    </StackPanel>
+</Window>
+
