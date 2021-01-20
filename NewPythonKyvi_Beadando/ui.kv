@@ -1,0 +1,74 @@
+WindowManager:
+    MainWindow:
+    ReportWindow:
+
+<MainWindow>:
+    name: "main"
+    GridLayout:
+
+        cols: 1
+        BoxLayout:
+            AsyncImage:
+                source: 'https://static.wikia.nocookie.net/villains/images/b/ba/Eb0.png/revision/latest?cb=20190126211834'
+                allow_stretch: True
+        GridLayout:
+            cols:1
+            GridLayout:
+                cols: 2
+                GridLayout:
+                    cols: 1
+                    rows: 4
+                    Label:
+                        text: 'Welcome to Python-Data Constructor!'
+                        size_hint: 0.1, 0.1
+                    Label:
+                        text: 'Please Give use your ID and Password.'
+                        size_hint: 0.1, 0.1
+                    Label:
+                        text: 'Research personal with a minimum of level 4 clearance is allowed to enter.'
+                        size_hint: 0.1, 0.1
+        GridLayout:
+            cols:2
+            Label:
+                text: 'ID'
+                size_hint: .1, None
+            TextInput:
+                id: id
+                size_hint: .1, None
+                multiline: False
+                password: True
+            Label:
+                text: 'Password'
+                size_hint: .1, None
+            TextInput:
+                id: passw
+                size_hint: .1, None
+                multiline: False
+                password: True
+        Button:
+            text: "Login To Site 32's Data Center"
+            size_hint: 0.5, 0.5
+            on_release:
+                app.root.current = "report" if passw.text == "admin" else "main"
+                root.manager.transition.direction = "left"
+
+
+<ReportWindow>:
+    name: "report"
+    GridLayout:
+        cols:2
+        Label:
+            text: 'Please Give SCP-ID that you want to have Information of:'
+            size_hint: 0.1, 0.1
+        TextInput:
+            id: scp_id
+            size_hint: .1, None
+            multiline: False
+            password: True
+    GridLayout:
+        cols:1
+        Button:
+            text: "Log Out"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
