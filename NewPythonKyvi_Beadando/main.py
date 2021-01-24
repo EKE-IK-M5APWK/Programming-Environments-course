@@ -104,6 +104,8 @@ class ReportWindow(Screen):
         else:
             os.system("marvin -r")
 
+class DataBaseWindow(Screen):
+    pass
 
 class WindowManager(ScreenManager):
     pass
@@ -111,7 +113,7 @@ class WindowManager(ScreenManager):
 
 kv = Builder.load_file("ui.kv")
 sm = WindowManager()
-screens = [LoginWindow(name="login"), ReportWindow(name="report"), RegWindow(name="reg")]
+screens = [LoginWindow(name="login"), ReportWindow(name="report"), RegWindow(name="reg"), DataBaseWindow(name="database")]
 for screen in screens:
     sm.add_widget(screen)
 

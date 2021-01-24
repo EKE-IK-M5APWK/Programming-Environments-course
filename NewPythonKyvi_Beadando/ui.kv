@@ -2,6 +2,7 @@ WindowManager:
     LoginWindow:
     ReportWindow:
     RegWindow:
+    DataBaseWindow:
 
 <LoginWindow>:
     name: "login"
@@ -91,9 +92,9 @@ WindowManager:
         BoxLayout:
             orientation: 'vertical'
             Button:
-                text: "About the SCP Foundation"
+                text: "SCP personal database"
                 on_release:
-                    root.about()
+                    app.root.current = "database"
                     root.manager.transition.direction = "right"
             Button:
                 text: "Log Out"
@@ -102,14 +103,71 @@ WindowManager:
                     app.root.current = "login"
                     root.manager.transition.direction = "right"
 
-<HistoryWindow>
-    name : "history"
+<DataBase>
+    name : "database"
+    username : user
+    password : pwd
+    level : lv
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            size: root.width, root.height/2
+            cols:1
+            Label:
+                size_hint: .1, None
+                text: "Username: "
+
+            TextInput:
+                size_hint: .1, None
+                id: user
+                multiline: False
+
+            Label:
+                size_hint: .1, None
+                text: "Password: "
+
+            TextInput:
+                size_hint: .1, None
+                id: pwd
+                multiline: False
+                password: True
+
+            Label:
+                size_hint: .1, None
+                text: "Clearance Level: "
+
+            TextInput:
+                size_hint: .1, None
+                id: lv
+                multiline: False
+                password: True
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: "<"
+                on_release:
+                    root.step("p")
+                    root.manager.transition.direction = "right"
+            Button:
+                text: ">"
+                pos_hint: {'right': 1}
+                on_release:
+                    root.step("n")
+                    root.manager.transition.direction = "right"
+        Button:
+            size_hint: 0.6, 0.15
+            text: "Back"
+            on_release:
+                root.manager.transition.direction = "left"
+                app.root.current = "report"
 
 <RegWindow>:
     name : "reg"
 
     username : user
     password : pwd
+
 
     GridLayout:
         cols:1
