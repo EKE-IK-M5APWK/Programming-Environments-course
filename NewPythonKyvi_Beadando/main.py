@@ -89,11 +89,25 @@ class RegWindow(Screen):
 
     def submit(self):
         if len(self.username.text) > 0 and len(self.password.text) > 0:
-            data = {'username': self.username.text, 'password': self.password.text, 'level': 1}
-            a = db.getDb("scp_database.json")
-            a.add(data)
-            sm.current = "login"
-            print("Registration successfully")
+            var = getAll()
+            available = True
+            for item in var:
+                if item["username"] == self.username.text:
+                    pop = Popup(title='Error',
+                                content=Label(text="Username Already Exits!"),
+                                size_hint=(None, None), size=(400, 400))
+                    pop.open()
+                    available = False
+            if available:
+                data = {'username': self.username.text, 'password': self.password.text, 'level': 1}
+                a = db.getDb("scp_database.json")
+                a.add(data)
+                sm.current = "login"
+                pop = Popup(title='Registration successfully',
+                            content=Label(text="Registration successfully!"),
+                            size_hint=(None, None), size=(400, 400))
+                pop.open()
+                available = False
         else:
             pop = Popup(title='Error',
                         content=Label(text="Check if all field is filled!"),

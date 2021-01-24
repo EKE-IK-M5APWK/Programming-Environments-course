@@ -1,1 +1,1 @@
-{"data": [{"username": "admin", "password": "admin", "level": 4, "id": 8370213737}]}
+{"data": [{"username": "admin", "password": "admin", "level": 4, "id": 8370213737}, {"username": "user", "password": "pw", "level": 1, "id": 1642649378}, {"username": "test", "password": "user", "level": 1, "id": 1967659213}]}
