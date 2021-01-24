@@ -1,3 +1,4 @@
+import json
 import os
 
 from kivy.app import App
@@ -11,32 +12,28 @@ import subprocess
 
 
 def getN(value):
-    a = db.getDb("scp_database")
+    a = db.getDb("scp_database.json")
     return a.get(value)
 
 
 def getAll():
-    a = db.getDb("scp_database")
+    a = db.getDb("scp_database.json")
     return a.getAll()
 
 
 def updateById(username, what_to_update):
-    a = db.getDb("scp_database")
+    a = db.getDb("scp_database.json")
     a.updateById(username, what_to_update)
 
 
 def update(query, what_to_update):
-    a = db.getDb("scp_database")
+    a = db.getDb("scp_database.json")
     a.update(query, what_to_update)
 
 
-def add(value):
-    a = db.getDb("scp_database")
-    a.add(value)
-
 
 def deleteById(username):
-    a = db.getDb("scp_database")
+    a = db.getDb("scp_database.json")
     a.deleteById(username)
 
 
@@ -46,6 +43,7 @@ class LoginWindow(Screen):
 
     def login(self):
         value = getAll()
+        print(value)
         sm.current = "report"
         # for item in value:
         #     if item["id"] == self.username.text and item["password"] == self.password.text and item["level"] >= 4:
@@ -57,22 +55,25 @@ class LoginWindow(Screen):
         #                     size_hint=(None, None), size=(500, 500))
         #         pop.open()
 
-
     def registration(self):
         sm.current = "reg"
-
-
-
 
 
 class RegWindow(Screen):
     username = ObjectProperty(None)
     password = ObjectProperty(None)
+
     def back(self):
         sm.current = "login"
 
     def submit(self):
-        pass
+        data = {}
+        data['username'] = self.username.text
+        data['password'] = self.password.text
+        data['level'] = 4
+        a = db.getDb("scp_database.json")
+        a.add(data)
+        sm.current = "login"
 
 
 class ReportWindow(Screen):
