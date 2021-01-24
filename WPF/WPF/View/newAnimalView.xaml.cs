@@ -35,10 +35,37 @@ namespace WPF.View
             InitializeComponent();
             ClassInitialize();
         }
-
+        private bool checkTextBoxText()
+        {
+            if (String.IsNullOrEmpty(nameTextBox.Text) || String.IsNullOrEmpty(ageTextBox.Text) || String.IsNullOrEmpty(speciesTextBox.Text) || String.IsNullOrEmpty(breedTextBox.Text) || String.IsNullOrEmpty(heightTextBox.Text) || String.IsNullOrEmpty(weightTextBox.Text) || String.IsNullOrEmpty(colorTextBox.Text))
+            {
+               
+                MessageBox.Show("Kérem töltse ki az összes mezőt!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if (double.Parse(ageTextBox.Text) <= 0)
+            {
+                MessageBox.Show("Az állat éltekorának nagyobbnak kell lennie mint:" + ageTextBox.Text, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (double.Parse(heightTextBox.Text) <= 0)
+            {
+                MessageBox.Show("Az állat magasságának nagyobbnak kell lennie mint:" + heightTextBox.Text, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (double.Parse(weightTextBox.Text) <= 0)
+            {
+                MessageBox.Show("Az állat súlyának nagyobbnak kell lennie mint:" + weightTextBox.Text, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
         private void addNewAnimal(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            if (checkTextBoxText())
+            {
+                DialogResult = true;
+            }
         }
 
         private void Exit(object sender, RoutedEventArgs e)

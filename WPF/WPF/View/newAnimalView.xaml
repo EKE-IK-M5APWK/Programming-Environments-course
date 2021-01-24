@@ -9,25 +9,25 @@
     <StackPanel HorizontalAlignment="Left" Height="561" VerticalAlignment="Top" Width="452">
         <Label Content="Név"  HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Name}" Background="Black" Foreground="White" />
+        <TextBox Name="nameTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Name}" Background="Black" Foreground="White" />
         <Label Content="Kor"  HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Age}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
+        <TextBox Name="ageTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Age}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
         <Label Content="Faj"  HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Species}" Background="Black" Foreground="White"/>
+        <TextBox Name="speciesTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Species}" Background="Black" Foreground="White"/>
         <Label Content="Fajta" HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Breed}" Background="Black" Foreground="White"/>
+        <TextBox Name="breedTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Breed}" Background="Black" Foreground="White"/>
         <Label Content="Szín" HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Color}" Background="Black" Foreground="White"/>
+        <TextBox Name="colorTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Color}" Background="Black" Foreground="White"/>
         <Label Content="Magasság" HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Height}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
+        <TextBox Name="heightTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Height}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
         <Label Content="Súly" HorizontalAlignment="Center">
         </Label>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Weight}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
+        <TextBox Name="weightTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Path=newAnimal.Weight}" Background="Black" Foreground="White" PreviewTextInput="TextBox_PreviewTextInput"/>
         <Label Content="Nem" HorizontalAlignment="Center">
         </Label>
         <ComboBox Name="sexComboBox" ItemsSource="{Binding Sex}" SelectedValue="{Binding newAnimal.Sex}"/>
