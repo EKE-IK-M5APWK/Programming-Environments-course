@@ -21,11 +21,6 @@ from pysondb import db
 import subprocess
 
 
-def getN(value):
-    a = db.getDb("scp_database.json")
-    return a.get(value)
-
-
 def getAll():
     a = db.getDb("scp_database.json")
     return a.getAll()
