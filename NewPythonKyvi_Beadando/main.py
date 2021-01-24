@@ -36,16 +36,6 @@ def updateById(username, what_to_update):
     a.updateById(username, what_to_update)
 
 
-def update(query, what_to_update):
-    a = db.getDb("scp_database.json")
-    a.update(query, what_to_update)
-
-
-def deleteById(username):
-    a = db.getDb("scp_database.json")
-    a.deleteById(username)
-
-
 class LoginWindow(Screen):
     title = "SCP Login"
 
