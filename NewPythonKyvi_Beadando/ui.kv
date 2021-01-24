@@ -2,7 +2,6 @@ WindowManager:
     LoginWindow:
     ReportWindow:
     RegWindow:
-    DataBaseWindow:
 
 <LoginWindow>:
     name: "login"
@@ -84,84 +83,37 @@ WindowManager:
                     root.search()
                     root.manager.transition.direction = "right"
             Button:
-                text: "Search History"
-                pos_hint: {'right': 1}
-                on_release:
-                    app.root.current = "history"
-                    root.manager.transition.direction = "right"
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: "SCP personal database"
-                on_release:
-                    app.root.current = "database"
-                    root.manager.transition.direction = "right"
-            Button:
                 text: "Log Out"
                 pos_hint: {'right': 1}
                 on_release:
                     app.root.current = "login"
                     root.manager.transition.direction = "right"
 
-<DataBase>
-    name : "database"
-    username : user
-    password : pwd
-    level : lv
+<SelectableLabel>:
+    canvas.before:
+        Color:
+            rgba: (1, 0, 0, 1) if self.selected else (.0, 0.9, .1, .3)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: (0, 0.9, .1, .3)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
-    GridLayout:
-        cols:1
-        GridLayout:
-            size: root.width, root.height/2
-            cols:1
-            Label:
-                size_hint: .1, None
-                text: "Username: "
-
-            TextInput:
-                size_hint: .1, None
-                id: user
-                multiline: False
-
-            Label:
-                size_hint: .1, None
-                text: "Password: "
-
-            TextInput:
-                size_hint: .1, None
-                id: pwd
-                multiline: False
-                password: True
-
-            Label:
-                size_hint: .1, None
-                text: "Clearance Level: "
-
-            TextInput:
-                size_hint: .1, None
-                id: lv
-                multiline: False
-                password: True
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: "<"
-                on_release:
-                    root.step("p")
-                    root.manager.transition.direction = "right"
-            Button:
-                text: ">"
-                pos_hint: {'right': 1}
-                on_release:
-                    root.step("n")
-                    root.manager.transition.direction = "right"
-        Button:
-            size_hint: 0.6, 0.15
-            text: "Back"
-            on_release:
-                root.manager.transition.direction = "left"
-                app.root.current = "report"
-
+<SelectableLabel>:
+    canvas.before:
+        Color:
+            rgba: (1, 0, 0, 1) if self.selected else (.0, 0.9, .1, .3)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: (0, 0.9, .1, .3)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 <RegWindow>:
     name : "reg"
 
@@ -211,3 +163,4 @@ WindowManager:
             on_release:
                 root.manager.transition.direction = "left"
                 root.submit()
+                root.clear()
