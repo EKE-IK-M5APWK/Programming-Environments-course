@@ -1,5 +1,4 @@
 # Programozasi_kornyezetek
-Projekt nem teljes
 
 A projekt 2 fő applikációbol áll, egy Python projektből és egy WPF projektből.
 
