@@ -1,6 +1,7 @@
 import json
 import os
-
+import tkinter as tk
+from tkinter import simpledialog
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -31,7 +32,6 @@ def update(query, what_to_update):
     a.update(query, what_to_update)
 
 
-
 def deleteById(username):
     a = db.getDb("scp_database.json")
     a.deleteById(username)
@@ -43,17 +43,30 @@ class LoginWindow(Screen):
 
     def login(self):
         value = getAll()
+        access = False
         print(value)
-        sm.current = "report"
-        # for item in value:
-        #     if item["id"] == self.username.text and item["password"] == self.password.text and item["level"] >= 4:
-        #         sm.current = "report"
-        #     else:
-        #         pop = Popup(title='Incorrect entry',
-        #                     content=Label(
-        #                         text='Access Denied! Check your input and you clearance level and try again.'),
-        #                     size_hint=(None, None), size=(500, 500))
-        #         pop.open()
+        for item in value:
+            if item["username"] == self.username.text and item["password"] == self.password.text:
+                if item["level"] >= 4:
+                    access = True
+                    sm.current = "report"
+                else:
+                    root = tk.Tk()
+                    root.withdraw()
+                    user_inp = simpledialog.askstring(title="O5 Clearance",
+                                                      prompt="Clearance level elevation. Give me your key:")
+                    if user_inp == "O5":
+                        updateById(item["id"], {"level": 4})
+                        print(item["id"], "-> Level:4")
+                        access = True
+                        sm.current = "report"
+
+        if not access:
+            pop = Popup(title='Incorrect entry',
+                        content=Label(
+                            text='Access Denied! Check your input and you clearance level and try again.'),
+                        size_hint=(None, None), size=(500, 500))
+            pop.open()
 
     def registration(self):
         sm.current = "reg"
@@ -70,10 +83,11 @@ class RegWindow(Screen):
         data = {}
         data['username'] = self.username.text
         data['password'] = self.password.text
-        data['level'] = 4
+        data['level'] = 1
         a = db.getDb("scp_database.json")
         a.add(data)
         sm.current = "login"
+        print("Registration successfully")
 
 
 class ReportWindow(Screen):
