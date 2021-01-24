@@ -1,9 +1,14 @@
 WindowManager:
-    MainWindow:
+    LoginWindow:
     ReportWindow:
+    RegWindow:
 
-<MainWindow>:
-    name: "main"
+<LoginWindow>:
+    name: "login"
+
+    username : name
+    password: passwd
+
     GridLayout:
 
         cols: 1
@@ -33,7 +38,7 @@ WindowManager:
                 text: 'ID'
                 size_hint: .1, None
             TextInput:
-                id: id
+                id: name
                 size_hint: .1, None
                 multiline: False
                 password: True
@@ -41,34 +46,110 @@ WindowManager:
                 text: 'Password'
                 size_hint: .1, None
             TextInput:
-                id: passw
+                id: passwd
                 size_hint: .1, None
                 multiline: False
                 password: True
         Button:
             text: "Login To Site 32's Data Center"
-            size_hint: 0.5, 0.5
+            size_hint: 0.2, 0.2
             on_release:
-                app.root.current = "report" if passw.text == "admin" else "main"
                 root.manager.transition.direction = "left"
-
+                root.login()
+        Button:
+            text: "Create new account"
+            size_hint: 0.2, 0.2
+            on_release:
+                root.manager.transition.direction = "down"
+                root.registration()
 
 <ReportWindow>:
     name: "report"
+    scp : input
+
     GridLayout:
-        cols:2
+        cols:1
         Label:
             text: 'Please Give SCP-ID that you want to have Information of:'
             size_hint: 0.1, 0.1
         TextInput:
-            id: scp_id
-            size_hint: .1, None
+            id: input
             multiline: False
-            password: True
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: "Search"
+                on_release:
+                    root.search()
+                    root.manager.transition.direction = "right"
+            Button:
+                text: "Search History"
+                pos_hint: {'right': 1}
+                on_release:
+                    app.root.current = "history"
+                    root.manager.transition.direction = "right"
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: "About the SCP Foundation"
+                on_release:
+                    root.about()
+                    root.manager.transition.direction = "right"
+            Button:
+                text: "Log Out"
+                pos_hint: {'right': 1}
+                on_release:
+                    app.root.current = "login"
+                    root.manager.transition.direction = "right"
+
+<HistoryWindow>
+    name : "history"
+
+<RegWindow>:
+    name : "reg"
+
+    username : user
+    password : pwd
+
     GridLayout:
         cols:1
+
+        GridLayout:
+            size: root.width, root.height/2
+            cols:1
+            Label:
+                text: "SCP personal registration. New SCP foundation members clearance level is 1."
+                size_hint: .1, None
+
+            Label:
+                size_hint: .1, None
+                text: "Username: "
+
+            TextInput:
+                size_hint: .1, None
+                id: user
+                multiline: False
+
+            Label:
+                size_hint: .1, None
+                text: "Password: "
+
+            TextInput:
+                size_hint: .1, None
+                id: pwd
+                multiline: False
+                password: True
+
         Button:
-            text: "Log Out"
+            size_hint: 0.4, 0.1
+            text: "Already own an account?"
             on_release:
-                app.root.current = "main"
-                root.manager.transition.direction = "right"
+                root.manager.transition.direction = "up"
+                root.back()
+
+        Button:
+            size_hint: 0.6, 0.15
+            text: "Registration"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
